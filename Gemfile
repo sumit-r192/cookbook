@@ -56,6 +56,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails' # For test data creation (optional but recommended)
   gem 'rspec-rails'
+  gem 'pry'
 end
 
 group :development do

@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
     @cuisine = params[:cuisine]&.downcase
     @ingredient = params[:ingredient]&.downcase
 
-    @recipes = Recipe.includes(:ingredients)
+    @recipes = Recipe.includes(:ingredients).where(nil)
 
     # Search by cuisine
     search_by_cuisine if @cuisine.present?
@@ -17,12 +17,10 @@ class RecipesController < ApplicationController
   end
 
   def search_by_cuisine
-    @recipes = @recipes.where('lower(cuisine) LIKE ?', "%#{@cuisine}%")
+    @recipes = @recipes.where('lower(recipes.cuisine) LIKE ? OR lower(recipes.name) LIKE ?', "%#{@cuisine}%", "%#{@cuisine}%")
   end
 
   def search_by_ingredient
-    @recipes = @recipes.joins(:ingredients)
-                       .where('lower(ingredients.name) LIKE ?', "%#{@ingredient}%")
-                       .distinct
+    @recipes = @recipes.joins(:ingredients).where('lower(ingredients.name) LIKE ?', "%#{@ingredient}%")
   end
 end
