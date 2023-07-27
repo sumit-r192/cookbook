@@ -18,10 +18,10 @@
   <ul>
     <% @recipes.each do |recipe| %>
       <li>
-        <h2><%= recipe.name %></h2>
-        <p><%= recipe.instructions %></p>
-        <p>Cooking Time: <%= recipe.cooking_time %> min</p>
-        <p>Ingredients: <%= recipe.ingredients.pluck(:name).join(', ') %></p>
+        <strong>Name:</strong> <%= recipe.name %><br>
+        <strong>Instructions:</strong> <%= recipe.instructions %><br>
+        <strong>Cooking Time:</strong> <%= recipe.cooking_time %> min<br>
+        <strong>Ingredients:</strong> <%= recipe.ingredients.pluck(:name).join(', ') %><br>
       </li>
     <% end %>
   </ul>

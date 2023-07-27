@@ -73,3 +73,4 @@ group :test do
   gem 'webdrivers'
 end
 gem 'rubocop', require: false
+gem 'faker', '~> 2.18', group: :development
