@@ -1,0 +1,30 @@
+<!-- app/views/recipes/index.html.erb -->
+<h1>Search Recipes</h1>
+
+<%= form_tag('/', method: :get) do %>
+  <div>
+    <%= label_tag :cuisine, "Cuisine" %>
+    <%= text_field_tag :cuisine, params[:cuisine], placeholder: "Enter cuisine name" %>
+  </div>
+  <div>
+    <%= label_tag :ingredient, "Ingredient" %>
+    <%= text_field_tag :ingredient, params[:ingredient], placeholder: "Enter ingredient name" %>
+  </div>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<% if @recipes.any? %>
+  <h1>Matched Recipes</h1>
+  <ul>
+    <% @recipes.each do |recipe| %>
+      <li>
+        <h2><%= recipe.name %></h2>
+        <p><%= recipe.instructions %></p>
+        <p>Cooking Time: <%= recipe.cooking_time %> min</p>
+        <p>Ingredients: <%= recipe.ingredients.pluck(:name).join(', ') %></p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No recipes found</p>
+<% end %>
