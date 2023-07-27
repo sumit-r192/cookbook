@@ -7,6 +7,7 @@ class CreateRecipes < ActiveRecord::Migration[7.0]
       t.text :instructions
       t.integer :cooking_time # in minutes
 
+      t.string :cuisine
       t.timestamps
     end
   end
