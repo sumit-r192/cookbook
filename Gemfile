@@ -77,3 +77,5 @@ group :test do
 end
 gem 'faker', '~> 2.18', group: :development
 gem 'rubocop', require: false
+gem "bootstrap"
+gem "sassc-rails"
